@@ -1,29 +1,28 @@
 import random
 
-num = input("Guess the number between 1 and 100: ")
-
-if num.isdigit():
-    num = int(num)
-    
-    if num >= 50 and num <= 100:
-        print("Too high!!!! ")
-
-    elif num >= 10 and num <= 49:
-        print("Too high!!!!!!! ")
+num_guess = random.randint(1, 10)
 
 
-    elif num <= 10 and num >= 1:
-        print("Too low!!! ")
+while True:
+
+    try:
+        choice = int(input("Guess the number between 1 and 10: "))
+
+        if choice < 1 or choice > 10:
+            print("Out of bounds!!!!! ")
 
 
-    elif num == random.randint(1, 9):
-        print("Hurray, You guessed the correct number!", num)
-        exit()
+        elif choice < num_guess:
+            print("Too low!!!! ")
 
-    else:
-        print("Out of bounds !!!!! ")
-        exit()
+        elif choice > num_guess:
+            print("Too high!!!! ")
 
-else:
-    print("You entered the string!! ")
-    exit()
+        
+        else:
+            print("You guessed it right!!!! ")
+            break
+
+
+    except ValueError:
+            print("You entered the string!! ")

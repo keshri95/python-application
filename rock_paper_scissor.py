@@ -1,32 +1,33 @@
 import random
-import string
 
-guessed = random.choice(string.ascii_lowercase)
-user_choice = input("Rock, Paper, Scissors? (r/p/s) : ").lower()
+choice_from_game = ['r', 'p', 's']
 
-lists_are = ['r', 'p', 's']
+user_choice = input("Rock, Paper, Scissors? (r/p/s): ").lower()
 
-
-while True:
-
-    try:
-        if user_choice == guessed:
-            print("You chose Rock!! ")
-            break
+guessed = random.choice(choice_from_game)
 
 
-        elif user_choice == guessed:
-            print("You chose Paper!! ")
-            break
 
-        elif user_choice == guessed:
-            print("You chose Scissors!! ")
-            break
+def winner_is(user, computer):
+    if user == computer:
+        print("It is a Tie!!!")
 
-        else: 
-            print("Invalid choice.")
+    elif (user == 'r' and computer == 's') or \
+         (user == 'p' and computer == 'r') or \
+         (user == 's' and computer == 'p'):
+        print("You win!!!")
 
-    except ValueError:
-        print("You entered the wrong choice!!!! ")
-        break
+    else:
+        print("You lose!!!")
 
+
+
+if user_choice in choice_from_game:
+
+    print(f'You chose {user_choice}!!')
+    print(f'Computer chose {guessed}!!!')
+    winner_is(user_choice, guessed)
+
+
+else:
+    print("Invalid choice.")
